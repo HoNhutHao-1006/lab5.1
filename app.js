@@ -25,9 +25,9 @@ app.use('/suppliers', require('./routes/supplierRoutes'));
 app.use('/products', require('./routes/productRoutes'));
 
 app.get('/', async (req, res) => {
-    const suppliers = await Supplier.find();
-    const products = await Product.find();
-    res.render('index', { title: 'Home Page', suppliers, products });
+  const suppliers = await Supplier.find();
+  const products = await Product.find();
+  res.render('index', { suppliers, products });
 });
 
 app.get('/suppliers', async (req, res) => {

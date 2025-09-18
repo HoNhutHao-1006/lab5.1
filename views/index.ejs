@@ -1,0 +1,17 @@
+<!-- filepath: c:\LTHDV\lesson5\supplier-product-app\views\suppliers\index.ejs -->
+<%- include('partials/header') %>
+
+<h2>Danh sách nhà cung cấp <a href="/suppliers/new">[Thêm]</a></h2>
+<ul>
+  <% suppliers.forEach(s => { %>
+    <li>
+      <%= s.name %> - <%= s.address %> - <%= s.phone %>
+      <a href="/suppliers/<%= s._id %>/edit">Sửa</a>
+      <form action="/suppliers/<%= s._id %>/delete" method="POST" style="display:inline;">
+        <button type="submit">Xóa</button>
+      </form>
+    </li>
+  <% }) %>
+</ul>
+
+<%- include('partials/footer') %>
