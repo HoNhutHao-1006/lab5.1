@@ -3,6 +3,8 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const path = require('path');
 const bodyParser = require('body-parser');
+const Supplier = require('./models/supplier');
+const Product = require('./models/product');
 
 dotenv.config();
 
@@ -22,8 +24,15 @@ app.set('view engine', 'ejs');
 app.use('/suppliers', require('./routes/supplierRoutes'));
 app.use('/products', require('./routes/productRoutes'));
 
-app.get('/', (req, res) => {
-    res.render('index', { title: 'Home Page' });
+app.get('/', async (req, res) => {
+    const suppliers = await Supplier.find();
+    const products = await Product.find();
+    res.render('index', { title: 'Home Page', suppliers, products });
+});
+
+app.get('/suppliers', async (req, res) => {
+    const suppliers = await Supplier.find();
+    res.render('suppliers/index', { suppliers });
 });
 
 const PORT = process.env.PORT || 5000;

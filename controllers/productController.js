@@ -3,7 +3,8 @@ const Supplier = require('../models/supplier');
 
 exports.index = async (req, res) => {
     const products = await Product.find().populate('supplierId');
-    res.render('products/index', { products });
+    const suppliers = await Supplier.find();
+    res.render('products/index', { products, suppliers });
 };
 
 exports.new = async (req, res) => {
