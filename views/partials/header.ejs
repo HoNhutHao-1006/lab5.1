@@ -1,0 +1,16 @@
+
+<header>
+  <h2>Quản lý sản phẩm & nhà cung cấp</h2>
+  <nav>
+    <a href="/">Home</a> |
+    <a href="/suppliers">Suppliers</a> |
+    <a href="/products">Products</a>
+    <% if (typeof user !== 'undefined' && user) { %>
+      | <a href="/logout">Thoát</a>
+    <% } else { %>
+      | <a href="/login">Đăng nhập</a>
+      | <a href="/register">Đăng ký</a>
+    <% } %>
+  </nav>
+</header>
+<hr>

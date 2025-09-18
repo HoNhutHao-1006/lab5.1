@@ -1,0 +1,16 @@
+
+<%- include('../partials/header') %>
+
+<h2>Thêm nhà cung cấp mới</h2>
+<form action="/suppliers" method="POST">
+  <label>Tên:</label>
+  <input type="text" name="name" required><br>
+  <label>Địa chỉ:</label>
+  <input type="text" name="address"><br>
+  <label>SĐT:</label>
+  <input type="text" name="phone"><br>
+  <button type="submit">Lưu</button>
+  <a href="/suppliers">Quay lại</a>
+</form>
+
+<%- include('../partials/footer') %>

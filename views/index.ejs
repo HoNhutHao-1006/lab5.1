@@ -1,0 +1,29 @@
+<!-- filepath: c:\LTHDV\lesson5\supplier-product-app\views\index.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <%- include('partials/header') %>
+  <h1>Welcome to Product-Supplier App</h1>
+  <form method="GET" action="/products" style="margin-bottom:10px;">
+    <input type="text" name="search" placeholder="Tìm sản phẩm theo tên">
+    <button type="submit">Tìm kiếm</button>
+  </form>
+  <form method="GET" action="/products" style="margin-bottom:10px;">
+    <select name="supplier" onchange="this.form.submit()">
+      <option value="">Chọn nhà cung cấp</option>
+      <% if (typeof suppliers !== 'undefined') { suppliers.forEach(s => { %>
+        <option value="<%= s._id %>"><%= s.name %></option>
+      <% }) } %>
+    </select>
+  </form>
+  <ul>
+    <li><a href="/suppliers">Suppliers</a></li>
+    <li><a href="/products">Products</a></li>
+  </ul>
+  <%- include('partials/footer') %>
+</body>
+</html>
